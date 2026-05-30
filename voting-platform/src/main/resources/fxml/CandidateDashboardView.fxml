@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="600.0" prefWidth="900.0" style="-fx-background-color: #f5f6fa;"
+            xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.client.controller.CandidateDashboardController">
+
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="60.0" style="-fx-background-color: #2980b9; -fx-padding: 0 20;">
+            <children>
+                <Label text="📢 CANDIDATE CAMPAIGN CONSOLE" textFill="white">
+                    <font>
+                        <Font name="System Bold" size="18.0" />
+                    </font>
+                </Label>
+            </children>
+        </HBox>
+    </top>
+
+    <center>
+        <HBox spacing="30.0" style="-fx-padding: 30;" alignment="CENTER">
+            <children>
+
+                <VBox spacing="20.0" prefWidth="420.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-border-color: #dcdde1; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 0);">
+                    <children>
+                        <Label text="Upload Campaign Materials" textFill="#2c3e50">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <VBox spacing="8.0">
+                            <children>
+                                <Label text="Campaign Manifesto (PDF Format)" textFill="#7f8c8d" style="-fx-font-weight: bold;" />
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button text="📁 Choose PDF" onAction="#handleUploadPDF" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-cursor: hand;" />
+                                        <Label fx:id="pdfPathLabel" text="No file selected" textFill="#95a5a6" wrapText="true" maxWidth="250.0" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="8.0">
+                            <children>
+                                <Label text="Campaign Video Ad (MP4 Format)" textFill="#7f8c8d" style="-fx-font-weight: bold;" />
+                                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                                    <children>
+                                        <Button text="🎬 Choose Video" onAction="#handleUploadVideo" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-cursor: hand;" />
+                                        <Label fx:id="videoPathLabel" text="No file selected" textFill="#95a5a6" wrapText="true" maxWidth="250.0" />
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+
+                        <Button text="🚀 Submit Materials for Moderation" onAction="#handleSubmitMaterial" prefWidth="370.0" style="-fx-background-color: #2980b9; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12; -fx-background-radius: 5; -fx-cursor: hand;" />
+                        <Label fx:id="uploadStatusLabel" textFill="#27ae60" wrapText="true" />
+                    </children>
+                </VBox>
+
+                <VBox spacing="20.0" prefWidth="380.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-border-color: #dcdde1; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.05), 10, 0, 0, 0);">
+                    <children>
+                        <Label text="Candidate Profile Profile" textFill="#2c3e50">
+                            <font>
+                                <Font name="System Bold" size="18.0" />
+                            </font>
+                        </Label>
+
+                        <VBox spacing="5.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 6;">
+                            <children>
+                                <Label text="Candidate Identity Name" textFill="#7f8c8d" />
+                                <Label text="Candidate Alpha" style="-fx-font-size: 16; -fx-font-weight: bold;" textFill="#2c3e50" />
+                            </children>
+                        </VBox>
+
+                        <VBox spacing="5.0" style="-fx-background-color: #f8f9fa; -fx-padding: 15; -fx-background-radius: 6;">
+                            <children>
+                                <Label text="Submission Queue Status" textFill="#7f8c8d" />
+                                <Label fx:id="queueStatusLabel" text="NO ACTIVE SUBMISSIONS" style="-fx-font-size: 14; -fx-font-weight: bold;" textFill="#7f8c8d" />
+                            </children>
+                        </VBox>
+
+                        <VBox VBox.vgrow="ALWAYS" /> <Button text="🚪 Logout Secure Session" onAction="#handleLogout" prefWidth="330.0" style="-fx-background-color: #bdc3c7; -fx-text-fill: #2c3e50; -fx-font-weight: bold; -fx-padding: 10; -fx-background-radius: 5; -fx-cursor: hand;" />
+                    </children>
+                </VBox>
+
+            </children>
+        </HBox>
+    </center>
+</BorderPane>
