@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.client.controller.RegisterController"
+      prefWidth="860.0" prefHeight="620.0"
+      style="-fx-background-color: white;">
+
+    <HBox alignment="CENTER_LEFT" prefHeight="48.0"
+          style="-fx-background-color: #1a6b3a; -fx-padding: 0 28;">
+        <Label text="SECUREVOTE 2026  —  REGISTRATION"
+               style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 10.5; -fx-font-weight: bold;" />
+    </HBox>
+
+    <HBox VBox.vgrow="ALWAYS">
+        <!-- Left strip -->
+        <VBox alignment="TOP_CENTER" prefWidth="240.0" spacing="20.0"
+              style="-fx-background-color: #f0f8f4; -fx-padding: 36 24; -fx-border-color: transparent #c8e8d8 transparent transparent; -fx-border-width: 0 1 0 0;">
+            <Label fx:id="titleLabel" text="Create Account"
+                   style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a6b3a;"
+                   wrapText="true" />
+            <Label fx:id="subtitleLabel" text="Fill in your details to register"
+                   style="-fx-font-size: 12; -fx-text-fill: #6a8a7a;"
+                   wrapText="true" />
+            <Region prefHeight="10.0" />
+            <VBox spacing="10.0">
+                <Label text="✔  Free to register"
+                       style="-fx-font-size: 11; -fx-text-fill: #2e9d5a;" />
+                <Label text="✔  Secure &amp; private"
+                       style="-fx-font-size: 11; -fx-text-fill: #2e9d5a;" />
+                <Label text="✔  Verified by the Electoral Board"
+                       style="-fx-font-size: 11; -fx-text-fill: #2e9d5a;" />
+            </VBox>
+        </VBox>
+
+        <!-- Right form -->
+        <ScrollPane fitToWidth="true" HBox.hgrow="ALWAYS"
+                    style="-fx-background: white; -fx-background-color: white; -fx-border-color: transparent;">
+            <VBox spacing="14.0" style="-fx-padding: 32 48; -fx-background-color: white;">
+
+                <VBox spacing="5.0">
+                    <Label text="Full Name"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2a5a3a;" />
+                    <TextField fx:id="fullNameField" promptText="Enter your full name"
+                               style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-pref-height: 40; -fx-font-size: 13; -fx-padding: 0 12;" />
+                </VBox>
+
+                <VBox spacing="5.0">
+                    <Label text="Username / Voter ID"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2a5a3a;" />
+                    <TextField fx:id="usernameField" promptText="Choose a unique username"
+                               style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-pref-height: 40; -fx-font-size: 13; -fx-padding: 0 12;" />
+                </VBox>
+
+                <VBox fx:id="officeBox" spacing="5.0" managed="false" visible="false">
+                    <Label text="Office / Position Running For"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2a5a3a;" />
+                    <TextField fx:id="officeField" promptText="e.g. Presidential Seat"
+                               style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-pref-height: 40; -fx-font-size: 13; -fx-padding: 0 12;" />
+                </VBox>
+
+                <VBox fx:id="manifestoBox" spacing="10.0" managed="false" visible="false"
+                      style="-fx-background-color: #f0f8f4; -fx-border-color: #a8d8b8; -fx-border-width: 1; -fx-border-radius: 8; -fx-background-radius: 8; -fx-padding: 14;">
+                    <Label text="Campaign Manifesto  (required)"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #1a6b3a;" />
+                    <HBox spacing="24.0" alignment="CENTER_LEFT">
+                        <RadioButton fx:id="radioLink" text="Provide a URL" onAction="#handleManifestoToggle" selected="true"
+                                     style="-fx-font-size: 12; -fx-text-fill: #2a5a3a;">
+                            <toggleGroup><ToggleGroup fx:id="manifestoToggle" /></toggleGroup>
+                        </RadioButton>
+                        <RadioButton fx:id="radioPdf" text="Upload a PDF" onAction="#handleManifestoToggle"
+                                     toggleGroup="$manifestoToggle"
+                                     style="-fx-font-size: 12; -fx-text-fill: #2a5a3a;" />
+                    </HBox>
+                    <VBox fx:id="linkBox" spacing="4.0">
+                        <TextField fx:id="manifestoLinkField" promptText="https://your-manifesto-link.com"
+                                   style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-pref-height: 38; -fx-font-size: 12; -fx-padding: 0 12;" />
+                    </VBox>
+                    <HBox fx:id="pdfBox" spacing="12.0" alignment="CENTER_LEFT" managed="false" visible="false">
+                        <Button text="Choose PDF" onAction="#handlePickPdf"
+                                style="-fx-background-color: #1a6b3a; -fx-text-fill: white; -fx-font-size: 12; -fx-background-radius: 6; -fx-padding: 7 14; -fx-cursor: hand;" />
+                        <Label fx:id="pdfNameLabel" text="No file selected"
+                               style="-fx-font-size: 12; -fx-text-fill: #8a9a8a;" />
+                    </HBox>
+                    <VBox spacing="5.0" style="-fx-background-color: white; -fx-padding: 10; -fx-border-color: #d8e6d9; -fx-border-radius: 6; -fx-background-radius: 6;">
+                        <Label text="Campaign Video Link (optional)"
+                               style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #1a6b3a;" />
+                        <TextField fx:id="videoLinkField" promptText="https://your-video-link.com"
+                                   style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-pref-height: 38; -fx-font-size: 12; -fx-padding: 0 12;" />
+                    </VBox>
+                </VBox>
+
+                <VBox spacing="5.0">
+                    <Label text="Password"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2a5a3a;" />
+                    <PasswordField fx:id="passwordField" promptText="Minimum 6 characters"
+                                   style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-pref-height: 40; -fx-font-size: 13; -fx-padding: 0 12;" />
+                </VBox>
+
+                <VBox spacing="5.0">
+                    <Label text="Confirm Password"
+                           style="-fx-font-size: 12; -fx-font-weight: bold; -fx-text-fill: #2a5a3a;" />
+                    <PasswordField fx:id="confirmPasswordField" promptText="Re-enter your password"
+                                   style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-radius: 6; -fx-background-radius: 6; -fx-pref-height: 40; -fx-font-size: 13; -fx-padding: 0 12;" />
+                </VBox>
+
+                <Label fx:id="messageLabel" wrapText="true" style="-fx-font-size: 12;" />
+
+                <HBox spacing="12.0" alignment="CENTER_LEFT">
+                    <Button text="Create Account" onAction="#handleRegister"
+                            prefHeight="44.0"
+                            style="-fx-background-color: #1a6b3a; -fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: bold; -fx-background-radius: 8; -fx-padding: 0 32; -fx-cursor: hand;" />
+                    <Button text="← Back" onAction="#handleBack"
+                            style="-fx-background-color: transparent; -fx-text-fill: #8a9a8a; -fx-font-size: 12; -fx-cursor: hand;" />
+                </HBox>
+
+            </VBox>
+        </ScrollPane>
+    </HBox>
+
+    <HBox alignment="CENTER" prefHeight="36.0"
+          style="-fx-background-color: #f0f8f4;">
+        <Label text="Authorised by the National Electoral Board  ·  All votes are encrypted and tamper-proof"
+               style="-fx-text-fill: #6a9a7a; -fx-font-size: 10;" />
+    </HBox>
+</VBox>

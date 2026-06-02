@@ -1,10 +1,15 @@
 package org.example.client.controller;
 
+import org.example.client.core.AppSession;
+import org.example.client.core.DataManager;
 import org.example.client.core.SceneManager;
+import org.example.client.core.User;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+
+import java.util.Optional;
 
 public class LoginController {
 
@@ -27,34 +32,34 @@ public class LoginController {
             return;
         }
 
-        System.out.println("Processing login credentials against system roles...");
+        System.out.println("Processing login credentials against database users...");
+        Optional<User> authenticated = DataManager.authenticateUser(voterId, password);
 
-        // 🛡️ ROLE 1: ELECTION ADMINISTRATOR
-        if (voterId.equals("admin") && password.equals("password")) {
-            System.out.println("Access Cleared: Routing to Admin Panel Desk...");
-            errorLabel.setText("");
-            SceneManager.switchScene("AdminDashboardView.fxml", "SecureVote - Election Control Panel");
+        if (authenticated.isEmpty()) {
+            errorLabel.setText("Invalid credentials. Register a new account or try again.");
+            return;
         }
-        // 📢 ROLE 2: POLITICAL CANDIDATE
-        else if (voterId.equals("candidate") && password.equals("password")) {
-            System.out.println("Access Cleared: Routing to Candidate Console...");
-            errorLabel.setText("");
-            SceneManager.switchScene("CandidateDashboardView.fxml", "SecureVote - Candidate Dashboard");
-        }
-        // 🗳️ ROLE 3: STANDARD ELIGIBLE VOTER (Using your "123" placeholder contract)
-        else if (voterId.equals("123") && password.equals("password")) {
-            System.out.println("Access Cleared: Routing to Voter Platform...");
-            errorLabel.setText("");
-            SceneManager.switchScene("DashboardView.fxml", "SecureVote - Voter Dashboard");
-        }
-        // ❌ REJECTED
-        else {
-            errorLabel.setText("Invalid Registration ID or Security PIN. Try again.");
+
+        User user = authenticated.get();
+        AppSession.setUsername(user.getUsername());
+        AppSession.setRole(user.getRole());
+        errorLabel.setText("");
+
+        switch (user.getRole()) {
+            case "admin" -> SceneManager.switchScene("AdminDashboardView.fxml", "SecureVote - Election Control Panel");
+            case "candidate" -> SceneManager.switchScene("CandidateDashboardView.fxml", "SecureVote - Candidate Dashboard");
+            default -> SceneManager.switchScene("DashboardView.fxml", "SecureVote - Voter Dashboard");
         }
     }
 
     @FXML
+    private void handleOpenRegistration() {
+        SceneManager.switchScene("RoleSelectionView.fxml", "SecureVote - Create Account");
+    }
+
+    @FXML
     private void handleBackToWelcome() {
+        AppSession.clear();
         SceneManager.switchScene("WelcomeView.fxml", "Welcome to SecureVote 2026");
     }
 }

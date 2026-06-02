@@ -10,4 +10,10 @@ public class WelcomeController {
         System.out.println("Opening Unified Authentication Gateway...");
         SceneManager.switchScene("LoginView.fxml", "SecureVote - Sign In");
     }
+
+    @FXML
+    private void handleCreateAccountNavigation() {
+        System.out.println("Opening account registration flow...");
+        SceneManager.switchScene("RoleSelectionView.fxml", "SecureVote - Create Account");
+    }
 }

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="org.example.client.controller.RoleSelectionController"
+      prefWidth="860.0" prefHeight="540.0"
+      style="-fx-background-color: white;">
+
+    <HBox alignment="CENTER_LEFT" prefHeight="48.0"
+          style="-fx-background-color: #1a6b3a; -fx-padding: 0 28;">
+        <Label text="SECUREVOTE 2026  —  CREATE ACCOUNT"
+               style="-fx-text-fill: rgba(255,255,255,0.8); -fx-font-size: 10.5; -fx-font-weight: bold;" />
+    </HBox>
+
+    <VBox alignment="CENTER" VBox.vgrow="ALWAYS" spacing="36.0" style="-fx-padding: 40;">
+        <VBox alignment="CENTER" spacing="8.0">
+            <Label text="How will you participate?"
+                   style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #1a6b3a;" />
+            <Label text="Select your role to begin registration"
+                   style="-fx-font-size: 13; -fx-text-fill: #6a8a7a;" />
+        </VBox>
+
+        <HBox alignment="CENTER" spacing="28.0">
+            <!-- Voter card -->
+            <VBox alignment="CENTER" spacing="16.0" prefWidth="280.0" prefHeight="240.0"
+                  style="-fx-background-color: white; -fx-border-color: #a8d8b8; -fx-border-width: 1.5; -fx-border-radius: 12; -fx-background-radius: 12; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+                <Label text="🗳" style="-fx-font-size: 42;" />
+                <VBox alignment="CENTER" spacing="6.0">
+                    <Label text="Voter"
+                           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a6b3a;" />
+                    <Label text="Register to cast your vote in the national election"
+                           style="-fx-font-size: 12; -fx-text-fill: #6a8a7a; -fx-text-alignment: center;"
+                           wrapText="true" alignment="CENTER" />
+                </VBox>
+                <Button text="Register as Voter" onAction="#handleSelectVoter"
+                        prefWidth="220.0" prefHeight="40.0"
+                        style="-fx-background-color: #1a6b3a; -fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;" />
+            </VBox>
+
+            <!-- Candidate card -->
+            <VBox alignment="CENTER" spacing="16.0" prefWidth="280.0" prefHeight="240.0"
+                  style="-fx-background-color: #f0f8f4; -fx-border-color: #2e9d5a; -fx-border-width: 1.5; -fx-border-radius: 12; -fx-background-radius: 12; -fx-padding: 30; -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.06), 10, 0, 0, 2);">
+                <Label text="📋" style="-fx-font-size: 42;" />
+                <VBox alignment="CENTER" spacing="6.0">
+                    <Label text="Candidate"
+                           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a6b3a;" />
+                    <Label text="Run for office and submit your campaign materials"
+                           style="-fx-font-size: 12; -fx-text-fill: #6a8a7a; -fx-text-alignment: center;"
+                           wrapText="true" alignment="CENTER" />
+                </VBox>
+                <Button text="Register as Candidate" onAction="#handleSelectCandidate"
+                        prefWidth="220.0" prefHeight="40.0"
+                        style="-fx-background-color: #2e9d5a; -fx-text-fill: white; -fx-font-size: 13; -fx-font-weight: bold; -fx-background-radius: 8; -fx-cursor: hand;" />
+            </VBox>
+        </HBox>
+
+        <Button text="← Back to Welcome" onAction="#handleBack"
+                style="-fx-background-color: transparent; -fx-text-fill: #8a9a8a; -fx-font-size: 12; -fx-cursor: hand;" />
+    </VBox>
+
+    <HBox alignment="CENTER" prefHeight="36.0"
+          style="-fx-background-color: #f0f8f4;">
+        <Label text="Authorised by the National Electoral Board  ·  All votes are encrypted and tamper-proof"
+               style="-fx-text-fill: #6a9a7a; -fx-font-size: 10;" />
+    </HBox>
+</VBox>

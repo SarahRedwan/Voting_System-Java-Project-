@@ -8,127 +8,226 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane prefHeight="700.0" prefWidth="1050.0" style="-fx-background-color: #f8f9fa;"
+<BorderPane prefHeight="680.0" prefWidth="1060.0"
+            style="-fx-background-color: white;"
             xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="org.example.client.controller.AdminDashboardController">
 
+    <!-- Top bar -->
+    <top>
+        <HBox alignment="CENTER_LEFT" prefHeight="52.0"
+              style="-fx-background-color: #1a6b3a; -fx-padding: 0 28;">
+            <Label text="⚖  SecureVote 2026"
+                   style="-fx-text-fill: white; -fx-font-size: 15; -fx-font-weight: bold;" />
+            <Label text="  —  Election Administration Portal"
+                   style="-fx-text-fill: rgba(255,255,255,0.5); -fx-font-size: 13;" />
+            <Region HBox.hgrow="ALWAYS" />
+            <Button text="Logout" onAction="#handleLogout"
+                    style="-fx-background-color: transparent; -fx-text-fill: rgba(255,255,255,0.55); -fx-font-size: 12; -fx-border-color: rgba(255,255,255,0.25); -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 6 14; -fx-cursor: hand;" />
+        </HBox>
+    </top>
+
+    <!-- Sidebar -->
     <left>
-        <VBox prefWidth="250.0" spacing="10.0" style="-fx-background-color: #1a252f; -fx-padding: 20;">
-            <children>
-                <Label text="🛡️ SecureVote Core" textFill="white">
-                    <font>
-                        <Font name="System Bold" size="20.0" />
-                    </font>
-                </Label>
-                <Label text="ELECTION HQ PORTAL" textFill="#95a5a6" style="-fx-font-size: 11; -fx-font-weight: bold;" />
+        <VBox prefWidth="220.0" spacing="2.0"
+              style="-fx-background-color: #f0ede6; -fx-border-color: transparent #ddd8ce transparent transparent; -fx-border-width: 0 1 0 0; -fx-padding: 20 12;">
 
-                <Separator opacity="0.2" style="-fx-padding: 10 0;" />
+            <Label text="Navigation"
+                   style="-fx-font-size: 10; -fx-font-weight: bold; -fx-text-fill: #8a9a8a; -fx-padding: 0 4 8 4;" />
 
-                <Button fx:id="btnNavApprovals" alignment="BASELINE_LEFT" prefWidth="210.0" text="📥 Approvals Queue" onAction="#showApprovalsView"
-                        style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12; -fx-cursor: hand;" />
+            <Button fx:id="btnNavApprovals" alignment="BASELINE_LEFT" prefWidth="196.0"
+                    text="Approvals Queue" onAction="#showApprovalsView"
+                    style="-fx-background-color: #1a3a2a; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 10 14; -fx-cursor: hand;" />
 
-                <Button fx:id="btnNavAnalytics" alignment="BASELINE_LEFT" prefWidth="210.0" text="📊 Live Turnout Analytics" onAction="#showAnalyticsView"
-                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-padding: 12; -fx-cursor: hand;" />
+            <Button fx:id="btnNavAnalytics" alignment="BASELINE_LEFT" prefWidth="196.0"
+                    text="Live Analytics" onAction="#showAnalyticsView"
+                    style="-fx-background-color: transparent; -fx-text-fill: #4a6a5a; -fx-font-size: 12; -fx-background-radius: 4; -fx-padding: 10 14; -fx-cursor: hand;" />
 
-                <Button fx:id="btnNavCandidates" alignment="BASELINE_LEFT" prefWidth="210.0" text="👥 Candidate Controls" onAction="#showCandidatesView"
-                        style="-fx-background-color: transparent; -fx-text-fill: #bdc3c7; -fx-padding: 12; -fx-cursor: hand;" />
+            <Button fx:id="btnNavCandidates" alignment="BASELINE_LEFT" prefWidth="196.0"
+                    text="Candidate Controls" onAction="#showCandidatesView"
+                    style="-fx-background-color: transparent; -fx-text-fill: #4a6a5a; -fx-font-size: 12; -fx-background-radius: 4; -fx-padding: 10 14; -fx-cursor: hand;" />
 
-                <VBox VBox.vgrow="ALWAYS" /> <Button text="🚨 EMERGENCY FREEZE" onAction="#handleSystemFreeze" prefWidth="210.0"
-                                                     style="-fx-background-color: #c0392b; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 12; -fx-cursor: hand;" />
-                <Button text="🚪 Terminate Session" onAction="#handleLogout" prefWidth="210.0"
-                        style="-fx-background-color: transparent; -fx-text-fill: #95a5a6; -fx-border-color: #95a5a6; -fx-border-radius: 5; -fx-cursor: hand;" />
-            </children>
+            <Button fx:id="btnNavVoteProgress" alignment="BASELINE_LEFT" prefWidth="196.0"
+                    text="Vote Progress" onAction="#showVoteProgressView"
+                    style="-fx-background-color: transparent; -fx-text-fill: #4a6a5a; -fx-font-size: 12; -fx-background-radius: 4; -fx-padding: 10 14; -fx-cursor: hand;" />
+
+            <Region VBox.vgrow="ALWAYS" />
+
+            <VBox spacing="6.0" style="-fx-padding: 0 0 4 0;">
+                <Button text="Emergency Freeze" onAction="#handleSystemFreeze" prefWidth="196.0"
+                        style="-fx-background-color: #fff5f5; -fx-text-fill: #c0392b; -fx-font-size: 11; -fx-font-weight: bold; -fx-border-color: #f5c6c6; -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 9 14; -fx-cursor: hand;" />
+                <Button text="Terminate Session" onAction="#handleLogout" prefWidth="196.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #8a9a8a; -fx-font-size: 11; -fx-border-color: #c8c0b0; -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 9 14; -fx-cursor: hand;" />
+            </VBox>
         </VBox>
     </left>
 
+    <!-- Main content -->
     <center>
-        <StackPane style="-fx-padding: 25;">
-            <children>
+        <StackPane style="-fx-padding: 24;">
 
-                <VBox fx:id="paneApprovals" spacing="20.0" visible="true">
-                    <children>
-                        <VBox spacing="5.0">
-                            <Label text="Candidate Submissions Review" textFill="#2c3e50" style="-fx-font-size: 24; -fx-font-weight: bold;" />
-                            <Label text="Approve or discard incoming candidate digital assets before publication to public voter nodes." textFill="#7f8c8d" />
-                        </VBox>
-
-                        <ListView fx:id="approvalQueueListView" VBox.vgrow="ALWAYS" style="-fx-background-radius: 6; -fx-border-color: #dcdde1;" />
-
-                        <HBox spacing="15.0" alignment="CENTER_RIGHT">
-                            <children>
-                                <Label fx:id="moderationStatusLabel" textFill="#27ae60" style="-fx-font-weight: bold;" />
-                                <VBox HBox.hgrow="ALWAYS" />
-                                <Button text="❌ Reject Assets" onAction="#handleRejectMaterial" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;" />
-                                <Button text="✅ Verify &amp; Publish" onAction="#handleApproveMaterial" style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;" />
-                            </children>
-                        </HBox>
-                    </children>
+            <!-- Panel 1: Approvals -->
+            <VBox fx:id="paneApprovals" spacing="16.0" visible="true">
+                <VBox spacing="3.0">
+                    <Label text="Candidate Submissions Review"
+                           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                    <Label text="Approve or reject incoming candidate digital assets before publication."
+                           style="-fx-font-size: 12; -fx-text-fill: #7a8a7a;" />
                 </VBox>
+                <ListView fx:id="approvalQueueListView" VBox.vgrow="ALWAYS"
+                          style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4;" />
+                <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                    <Label fx:id="moderationStatusLabel"
+                           style="-fx-text-fill: #2e7d52; -fx-font-size: 12; -fx-font-weight: bold;" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button text="Reject" onAction="#handleRejectMaterial"
+                            style="-fx-background-color: #fff5f5; -fx-text-fill: #c0392b; -fx-font-weight: bold; -fx-font-size: 12; -fx-border-color: #f5c6c6; -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 9 20; -fx-cursor: hand;" />
+                    <Button text="Verify &amp; Publish" onAction="#handleApproveMaterial"
+                            style="-fx-background-color: #1a3a2a; -fx-text-fill: white; -fx-font-weight: bold; -fx-font-size: 12; -fx-background-radius: 3; -fx-padding: 9 20; -fx-cursor: hand;" />
+                </HBox>
+            </VBox>
 
-                <VBox fx:id="paneAnalytics" spacing="20.0" visible="false">
-                    <children>
-                        <VBox spacing="5.0">
-                            <Label text="Live Election Statistical Engine" textFill="#2c3e50" style="-fx-font-size: 24; -fx-font-weight: bold;" />
-                            <Label text="Cryptographically verifiable charts pulling telemetry from synchronized validator networks." textFill="#7f8c8d" />
-                        </VBox>
-
-                        <HBox spacing="20.0" VBox.vgrow="ALWAYS">
-                            <children>
-                                <VBox style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #dcdde1;" HBox.hgrow="ALWAYS" alignment="CENTER">
-                                    <children>
-                                        <Label text="Ballot Processing Allocation" style="-fx-font-weight: bold;" textFill="#34495e" />
-                                        <PieChart fx:id="ballotPieChart" legendSide="BOTTOM" />
-                                    </children>
-                                </VBox>
-                                <VBox style="-fx-background-color: white; -fx-padding: 15; -fx-background-radius: 8; -fx-border-color: #dcdde1;" HBox.hgrow="ALWAYS" alignment="CENTER">
-                                    <children>
-                                        <Label text="Turnout Demographics Progress" style="-fx-font-weight: bold;" textFill="#34495e" />
-                                        <BarChart fx:id="turnoutBarChart">
-                                            <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
-                                            <yAxis><NumberAxis side="LEFT" /></yAxis>
-                                        </BarChart>
-                                    </children>
-                                </VBox>
-                            </children>
-                        </HBox>
-                        <Button text="📋 Export Tamper-Proof Audit Ledger (CSV)" onAction="#handleExportLedger" style="-fx-background-color: #34495e; -fx-text-fill: white; -fx-padding: 12;" />
-                    </children>
+            <!-- Panel 2: Analytics -->
+            <VBox fx:id="paneAnalytics" spacing="16.0" visible="false">
+                <VBox spacing="3.0">
+                    <Label text="Live Election Analytics"
+                           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                    <Label text="Real-time charts from synchronized validator networks."
+                           style="-fx-font-size: 12; -fx-text-fill: #7a8a7a;" />
                 </VBox>
+                <HBox spacing="16.0" VBox.vgrow="ALWAYS">
+                    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" spacing="8.0"
+                          style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 16;">
+                        <Label text="Ballot Allocation"
+                               style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                        <PieChart fx:id="ballotPieChart" legendSide="BOTTOM" />
+                    </VBox>
+                    <VBox HBox.hgrow="ALWAYS" alignment="CENTER" spacing="8.0"
+                          style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 16;">
+                        <Label text="Turnout Demographics"
+                               style="-fx-font-size: 13; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                        <BarChart fx:id="turnoutBarChart" VBox.vgrow="ALWAYS">
+                            <xAxis><CategoryAxis side="BOTTOM" /></xAxis>
+                            <yAxis><NumberAxis side="LEFT" /></yAxis>
+                        </BarChart>
+                    </VBox>
+                </HBox>
+                <Button text="Export Audit Ledger (CSV)" onAction="#handleExportLedger"
+                        style="-fx-background-color: #1a3a2a; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-radius: 4; -fx-padding: 10 20; -fx-cursor: hand;" />
+            </VBox>
 
-                <VBox fx:id="paneCandidates" spacing="20.0" visible="false">
-                    <children>
-                        <VBox spacing="5.0">
-                            <Label text="Nominated Candidates Core Registry" textFill="#2c3e50" style="-fx-font-size: 24; -fx-font-weight: bold;" />
-                            <Label text="Monitor active campaign structures. Intercept or block candidates violating operational policies." textFill="#7f8c8d" />
-                        </VBox>
-
-                        <TableView fx:id="candidateTableView" VBox.vgrow="ALWAYS" style="-fx-background-radius: 6;">
-                            <columns>
-                                <TableColumn fx:id="colName" prefWidth="250.0" text="Candidate Profile Name" />
-                                <TableColumn fx:id="colOffice" prefWidth="200.0" text="Contested Seat / Office" />
-                                <TableColumn fx:id="colStatus" prefWidth="180.0" text="System Status Clearance" />
-                            </columns>
-                        </TableView>
-
-                        <HBox spacing="15.0" alignment="CENTER_RIGHT">
-                            <children>
-                                <Button text="🟢 Unban / Re-Verify" onAction="#handleUnbanCandidate" style="-fx-background-color: #27ae60; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;" />
-                                <Button text="🛑 Revoke / Block Candidate" onAction="#handleBlockCandidate" style="-fx-background-color: #e74c3c; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 20; -fx-cursor: hand;" />
-                            </children>
-                        </HBox>
-                    </children>
+            <!-- Panel 3: Candidates -->
+            <VBox fx:id="paneCandidates" spacing="16.0" visible="false">
+                <VBox spacing="3.0">
+                    <Label text="Candidate Registry"
+                           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                    <Label text="Monitor and manage active campaign structures."
+                           style="-fx-font-size: 12; -fx-text-fill: #7a8a7a;" />
                 </VBox>
+                <TableView fx:id="candidateTableView" VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4;">
+                    <columns>
+                        <TableColumn fx:id="colName"   prefWidth="240.0" text="Candidate Name" />
+                        <TableColumn fx:id="colOffice" prefWidth="200.0" text="Office / Seat" />
+                        <TableColumn fx:id="colStatus" prefWidth="160.0" text="Status" />
+                    </columns>
+                </TableView>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <TextField fx:id="candidateNameField" promptText="Candidate Name" prefWidth="190.0"
+                               style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4; -fx-pref-height: 36; -fx-padding: 0 10; -fx-font-size: 12;" />
+                    <TextField fx:id="candidateOfficeField" promptText="Office / Seat" prefWidth="190.0"
+                               style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4; -fx-pref-height: 36; -fx-padding: 0 10; -fx-font-size: 12;" />
+                    <Button text="Add" onAction="#handleAddCandidate"
+                            style="-fx-background-color: #1a3a2a; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-radius: 3; -fx-padding: 8 16; -fx-cursor: hand;" />
+                    <Button text="Remove" onAction="#handleRemoveCandidate"
+                            style="-fx-background-color: #fff5f5; -fx-text-fill: #c0392b; -fx-font-size: 12; -fx-font-weight: bold; -fx-border-color: #f5c6c6; -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 8 16; -fx-cursor: hand;" />
+                </HBox>
+                <Label fx:id="candidateActionStatusLabel" wrapText="true"
+                       style="-fx-text-fill: #2e7d52; -fx-font-size: 12;" />
+                <HBox spacing="10.0" alignment="CENTER_RIGHT">
+                    <Button text="Unban / Re-Verify" onAction="#handleUnbanCandidate"
+                            style="-fx-background-color: #f0f7f2; -fx-text-fill: #2e7d52; -fx-font-weight: bold; -fx-font-size: 12; -fx-border-color: #a8c8b8; -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 9 16; -fx-cursor: hand;" />
+                    <Button text="Revoke / Block" onAction="#handleBlockCandidate"
+                            style="-fx-background-color: #fff5f5; -fx-text-fill: #c0392b; -fx-font-weight: bold; -fx-font-size: 12; -fx-border-color: #f5c6c6; -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 9 16; -fx-cursor: hand;" />
+                </HBox>
+            </VBox>
 
-            </children>
+            <!-- Panel 4: Vote Progress -->
+            <VBox fx:id="paneVoteProgress" spacing="16.0" visible="false">
+                <VBox spacing="3.0">
+                    <Label text="Live Vote Count"
+                           style="-fx-font-size: 20; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                    <Label text="Real-time tallies, rankings, and percentage breakdown."
+                           style="-fx-font-size: 12; -fx-text-fill: #7a8a7a;" />
+                </VBox>
+                <HBox spacing="14.0">
+                    <VBox alignment="CENTER" spacing="4.0" prefWidth="160.0" prefHeight="80.0"
+                          style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 14;">
+                        <Label text="TOTAL VOTES"
+                               style="-fx-font-size: 9; -fx-font-weight: bold; -fx-text-fill: #8a9a8a;" />
+                        <Label fx:id="statTotalVotes" text="0"
+                               style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="4.0" prefWidth="160.0" prefHeight="80.0"
+                          style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 14;">
+                        <Label text="CANDIDATES"
+                               style="-fx-font-size: 9; -fx-font-weight: bold; -fx-text-fill: #8a9a8a;" />
+                        <Label fx:id="statTotalCandidates" text="0"
+                               style="-fx-font-size: 28; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;" />
+                    </VBox>
+                    <VBox alignment="CENTER" spacing="4.0" prefWidth="260.0" prefHeight="80.0"
+                          style="-fx-background-color: #f0f7f2; -fx-border-color: #a8c8b8; -fx-border-radius: 4; -fx-background-radius: 4; -fx-padding: 14;">
+                        <Label text="CURRENT LEADER"
+                               style="-fx-font-size: 9; -fx-font-weight: bold; -fx-text-fill: #2e7d52;" />
+                        <Label fx:id="statLeader" text="—"
+                               style="-fx-font-size: 15; -fx-font-weight: bold; -fx-text-fill: #1a3a2a;"
+                               wrapText="true" />
+                        <Label fx:id="statLeaderVotes" text="0 votes"
+                               style="-fx-font-size: 11; -fx-text-fill: #5a7a6a;" />
+                    </VBox>
+                </HBox>
+                <TableView fx:id="voteProgressTable" VBox.vgrow="ALWAYS"
+                           style="-fx-background-color: white; -fx-border-color: #c8d8c8; -fx-border-radius: 4; -fx-background-radius: 4;">
+                    <columns>
+                        <TableColumn fx:id="colVpRank"    prefWidth="45.0"  text="#" />
+                        <TableColumn fx:id="colVpName"    prefWidth="190.0" text="Candidate" />
+                        <TableColumn fx:id="colVpOffice"  prefWidth="170.0" text="Office" />
+                        <TableColumn fx:id="colVpVotes"   prefWidth="75.0"  text="Votes" />
+                        <TableColumn fx:id="colVpPercent" prefWidth="220.0" text="Share" />
+                        <TableColumn fx:id="colVpStatus"  prefWidth="140.0" text="Status" />
+                    </columns>
+                </TableView>
+                <HBox spacing="10.0" alignment="CENTER_LEFT">
+                    <Label fx:id="voteProgressStatusLabel"
+                           style="-fx-text-fill: #2e7d52; -fx-font-size: 12; -fx-font-weight: bold;" />
+                    <Region HBox.hgrow="ALWAYS" />
+                    <Button text="Refresh" onAction="#handleRefreshVoteProgress"
+                            style="-fx-background-color: #f0ede6; -fx-text-fill: #1a3a2a; -fx-font-size: 12; -fx-font-weight: bold; -fx-border-color: #c8c0b0; -fx-border-radius: 3; -fx-background-radius: 3; -fx-padding: 9 16; -fx-cursor: hand;" />
+                    <Button text="Export CSV" onAction="#handleExportLedger"
+                            style="-fx-background-color: #1a3a2a; -fx-text-fill: white; -fx-font-size: 12; -fx-font-weight: bold; -fx-background-radius: 3; -fx-padding: 9 16; -fx-cursor: hand;" />
+                </HBox>
+            </VBox>
+
         </StackPane>
     </center>
+
+    <!-- Footer -->
+    <bottom>
+        <HBox alignment="CENTER" prefHeight="36.0"
+              style="-fx-background-color: #edeae2;">
+            <Label text="Authorised by the National Electoral Board  ·  All votes are encrypted and tamper-proof"
+                   style="-fx-text-fill: #8a9a8a; -fx-font-size: 10;" />
+        </HBox>
+    </bottom>
+
 </BorderPane>

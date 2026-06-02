@@ -4,6 +4,7 @@ public final class AppSession {
 
     private static volatile String username = "guest";
     private static volatile String role = "guest";
+    private static volatile String pendingRole = "voter";
 
     private AppSession() {
     }
@@ -24,8 +25,18 @@ public final class AppSession {
         role = value;
     }
 
+    /** Holds the role chosen on the RoleSelection screen before registration completes. */
+    public static String getPendingRole() {
+        return pendingRole;
+    }
+
+    public static void setPendingRole(String value) {
+        pendingRole = value;
+    }
+
     public static void clear() {
         username = "guest";
         role = "guest";
+        pendingRole = "voter";
     }
 }
