@@ -9,58 +9,43 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox alignment="TOP_CENTER" spacing="20.0" prefWidth="600.0" prefHeight="400.0"
+<VBox alignment="TOP_CENTER" spacing="20.0" prefWidth="600.0" prefHeight="480.0"
       xmlns="http://javafx.com/javafx/24" xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.example.client.controller.VotingController"
-      style="-fx-background-color: #f4f6f9;">
+      style="-fx-background-color: #eef2ff;">
 
     <padding>
         <Insets bottom="30.0" left="30.0" right="30.0" top="30.0"/>
     </padding>
 
-    <Label text="Active Election: 2026 Executive Board" wrapText="true">
-        <font>
-            <Font name="System Bold" size="22.0" />
-        </font>
-    </Label>
-    <Label text="Please select your candidate for President below:" textFill="#666666">
-        <font>
-            <Font size="14.0" />
-        </font>
+    <Label text="Secure Voting Booth" wrapText="true">
+        <font><Font name="System Bold" size="22.0" /></font>
     </Label>
 
-    <VBox spacing="15.0" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.1), 10, 0, 0, 0);">
-        <children>
-            <fx:define>
-                <ToggleGroup fx:id="candidateGroup" />
-            </fx:define>
+    <VBox spacing="8.0" style="-fx-background-color: #e0e7ff; -fx-padding: 14; -fx-background-radius: 8; -fx-max-width: 520;">
+        <Label fx:id="phaseBannerLabel" text="Checking election status..." wrapText="true" style="-fx-font-weight: bold; -fx-font-size: 14;" />
+        <HBox spacing="10.0" alignment="CENTER_LEFT">
+            <Label fx:id="timerPrefixLabel" text="Time remaining:" />
+            <Label fx:id="boothTimerLabel" text="--:--:--" style="-fx-font-weight: bold; -fx-text-fill: #dc2626;" />
+        </HBox>
+    </VBox>
 
-            <RadioButton fx:id="candidate1" text="Candidate A (Progressive Party)" toggleGroup="$candidateGroup">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </RadioButton>
-
-            <RadioButton fx:id="candidate2" text="Candidate B (Unity Coalition)" toggleGroup="$candidateGroup">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </RadioButton>
-
-            <RadioButton fx:id="candidate3" text="Candidate C (Independent)" toggleGroup="$candidateGroup">
-                <font>
-                    <Font size="16.0" />
-                </font>
-            </RadioButton>
-        </children>
+    <VBox fx:id="ballotPanel" spacing="15.0" style="-fx-background-color: white; -fx-padding: 20; -fx-background-radius: 10;">
+        <Label text="Select your candidate:" textFill="#64748b" />
+        <fx:define>
+            <ToggleGroup fx:id="candidateGroup" />
+        </fx:define>
+        <RadioButton fx:id="candidate1" toggleGroup="$candidateGroup" />
+        <RadioButton fx:id="candidate2" toggleGroup="$candidateGroup" />
+        <RadioButton fx:id="candidate3" toggleGroup="$candidateGroup" />
     </VBox>
 
     <HBox spacing="20.0" alignment="CENTER">
         <Button text="Cancel" onAction="#handleCancel"
-                style="-fx-background-color: #e0e0e0; -fx-text-fill: #333333; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 5;"/>
-        <Button text="Submit Secure Vote" onAction="#handleSubmitVote"
-                style="-fx-background-color: #2196F3; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 25; -fx-background-radius: 5; -fx-cursor: hand;"/>
+                style="-fx-background-color: #e2e8f0; -fx-text-fill: #1e293b; -fx-font-weight: bold; -fx-padding: 10 25;"/>
+        <Button fx:id="submitVoteButton" text="Submit Secure Vote" onAction="#handleSubmitVote" disable="true"
+                style="-fx-background-color: #4338ca; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10 25; -fx-cursor: hand;"/>
     </HBox>
 
-    <Label fx:id="statusLabel" textFill="#e91e63" />
+    <Label fx:id="statusLabel" textFill="#dc2626" wrapText="true" maxWidth="500.0" />
 </VBox>

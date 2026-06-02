@@ -9,12 +9,12 @@
 <?import javafx.scene.text.Font?>
 
 <VBox alignment="CENTER" spacing="20.0" prefWidth="600.0" prefHeight="400.0"
-      style="-fx-background-color: #f4f6f9;" xmlns="http://javafx.com/javafx/21"
+      style="-fx-background-color: #eef2ff;" xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="org.example.client.controller.LoginController">
 
     <children>
-        <Label text="Voter Authentication" textFill="#2c3e50">
+        <Label text="Secure Sign In" textFill="#1e293b">
             <font>
                 <Font name="System Bold" size="28.0" />
             </font>
@@ -24,31 +24,36 @@
             <children>
                 <VBox spacing="5.0">
                     <children>
-                        <Label text="Voter Registration ID" textFill="#34495e" />
-                        <TextField fx:id="voterIdField" promptText="Enter your ID"
+                        <Label text="Username or login ID" textFill="#312e81" />
+                        <TextField fx:id="voterIdField" promptText="username, Voter ID, phone, or FAN"
                                    style="-fx-pref-height: 35; -fx-background-radius: 5;" />
                     </children>
                 </VBox>
 
                 <VBox spacing="5.0">
                     <children>
-                        <Label text="Security PIN / Password" textFill="#34495e" />
+                        <Label text="Security PIN / Password" textFill="#312e81" />
                         <PasswordField fx:id="passwordField" promptText="Enter your PIN"
                                        style="-fx-pref-height: 35; -fx-background-radius: 5;" />
                     </children>
                 </VBox>
 
-                <Label fx:id="errorLabel" textFill="#e74c3c" wrapText="true" />
+                <Label fx:id="errorLabel" textFill="#dc2626" wrapText="true" />
 
                 <Button mnemonicParsing="false" onAction="#handleLoginSubmit"
                         prefWidth="300.0" prefHeight="40.0"
-                        style="-fx-background-color: #2ecc71; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
+                        style="-fx-background-color: #059669; -fx-text-fill: white; -fx-font-weight: bold; -fx-background-radius: 5;"
                         text="Sign In securely" />
 
                 <Button mnemonicParsing="false" onAction="#handleBackToWelcome"
                         prefWidth="300.0" prefHeight="30.0"
-                        style="-fx-background-color: transparent; -fx-text-fill: #7f8c8d;"
+                        style="-fx-background-color: transparent; -fx-text-fill: #64748b;"
                         text="← Back to Welcome Screen" />
+
+                <Button mnemonicParsing="false" onAction="#handleGoToRegister"
+                        prefWidth="300.0" prefHeight="30.0"
+                        style="-fx-background-color: transparent; -fx-text-fill: #059669;"
+                        text="Don't have an account? Register" />
             </children>
         </VBox>
     </children>

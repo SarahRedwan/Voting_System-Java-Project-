@@ -9,9 +9,21 @@ import java.net.URL;
 
 public class SceneManager {
     private static Stage primaryStage;
+    private static String registrationData;
 
     public static void setStage(Stage stage) {
         primaryStage = stage;
+    }
+
+    public static void switchSceneWithData(String fxmlFile, String windowTitle, String data) {
+        registrationData = data;
+        switchScene(fxmlFile, windowTitle);
+    }
+
+    public static String consumeRegistrationData() {
+        String data = registrationData;
+        registrationData = null;
+        return data;
     }
 
     public static void switchScene(String fxmlFile, String windowTitle) {
@@ -25,6 +37,10 @@ public class SceneManager {
 
             Parent root = FXMLLoader.load(fxmlLocation);
             Scene scene = new Scene(root);
+            URL css = Thread.currentThread().getContextClassLoader().getResource("styles/securevote-theme.css");
+            if (css != null) {
+                scene.getStylesheets().add(css.toExternalForm());
+            }
 
             primaryStage.setTitle(windowTitle);
             primaryStage.setScene(scene);

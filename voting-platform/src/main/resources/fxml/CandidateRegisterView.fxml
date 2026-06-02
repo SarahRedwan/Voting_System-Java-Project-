@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="700.0" prefWidth="720.0" style="-fx-background-color: #eef2ff;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.client.controller.CandidateRegisterController">
+
+    <top>
+        <VBox spacing="5.0" style="-fx-padding: 20;">
+            <Label text="Candidate Registration" textFill="#1e293b">
+                <font><Font name="System Bold" size="26.0" /></font>
+            </Label>
+            <Label text="Your application will be reviewed by an administrator before you can campaign or appear on ballots." textFill="#64748b" wrapText="true" />
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox spacing="12.0" maxWidth="520.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-border-color: #e2e8f0;">
+                <Label text="Full Name *" textFill="#312e81" />
+                <TextField fx:id="fullNameField" />
+                <Label text="Phone Number * (unique)" textFill="#312e81" />
+                <TextField fx:id="phoneField" />
+                <Label text="FAN Number / Fayda ID * (unique)" textFill="#312e81" />
+                <TextField fx:id="fanField" />
+                <Label text="Date of Birth * (YYYY-MM-DD)" textFill="#312e81" />
+                <TextField fx:id="dobField" />
+                <Label text="Political Party / Affiliation *" textFill="#312e81" />
+                <TextField fx:id="partyField" />
+                <Label text="Position Running For *" textFill="#312e81" />
+                <TextField fx:id="positionField" />
+                <Label text="Biography / Description *" textFill="#312e81" />
+                <TextArea fx:id="bioField" prefRowCount="4" wrapText="true" />
+                <Label text="Address *" textFill="#312e81" />
+                <TextArea fx:id="addressField" prefRowCount="2" wrapText="true" />
+                <Label text="Create Password *" textFill="#312e81" />
+                <PasswordField fx:id="passwordField" />
+                <Label text="Confirm Password *" textFill="#312e81" />
+                <PasswordField fx:id="confirmPasswordField" />
+                <Label fx:id="statusLabel" wrapText="true" />
+                <HBox spacing="10.0" alignment="CENTER">
+                    <Button text="Submit Application" onAction="#handleRegister" prefWidth="160.0"
+                            style="-fx-background-color: #7c3aed; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10; -fx-cursor: hand;" />
+                    <Button text="Cancel" onAction="#handleCancel"
+                            style="-fx-background-color: #94a3b8; -fx-text-fill: white; -fx-padding: 10; -fx-cursor: hand;" />
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>

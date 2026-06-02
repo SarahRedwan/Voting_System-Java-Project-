@@ -1,0 +1,20 @@
+# Build output
+target/
+out/
+*.class
+
+# IDE
+.idea/
+*.iml
+.vscode/
+
+# Local uploads and large media
+uploads/
+src/main/resources/uploads/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

@@ -1,3 +1,4 @@
+
 package org.example.client;
 
 import org.example.client.core.SceneManager;
@@ -14,6 +15,7 @@ public class Main extends Application {
         // Launch the application using our Welcome View FXML
         SceneManager.switchScene("WelcomeView.fxml", "Welcome to SecureVote 2026");
     }
+
 
     public static void main(String[] args) {
         launch(args);

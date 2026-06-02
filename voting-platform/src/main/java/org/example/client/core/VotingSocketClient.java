@@ -80,6 +80,26 @@ public final class VotingSocketClient {
         send("USERS");
     }
 
+    public synchronized void requestElectionStatus() {
+        send("ELECTION_STATUS");
+    }
+
+    public synchronized void requestCandidates() {
+        send("CANDIDATES");
+    }
+
+    public synchronized void requestVoterStatus(String username) {
+        send("VOTER_STATUS:" + username);
+    }
+
+    public synchronized void requestTimeRemaining() {
+        send("TIME_REMAINING");
+    }
+
+    public synchronized void requestElectionPhase() {
+        send("ELECTION_PHASE");
+    }
+
     public synchronized void sendChat(String message) {
         send("CHAT:" + message);
     }

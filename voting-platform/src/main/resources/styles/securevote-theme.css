@@ -1,0 +1,31 @@
+.root {
+    -fx-font-family: "Segoe UI", "System", sans-serif;
+    -fx-background-color: #eef2ff;
+}
+
+.button {
+    -fx-background-radius: 6;
+    -fx-cursor: hand;
+}
+
+.text-field, .password-field, .text-area {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+    -fx-border-radius: 6;
+    -fx-background-radius: 6;
+}
+
+.list-view, .table-view {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #e2e8f0;
+}
+
+.progress-bar > .bar {
+    -fx-background-color: linear-gradient(to right, #0d9488, #4338ca);
+    -fx-background-radius: 4;
+}
+
+.progress-bar > .track {
+    -fx-background-color: #e2e8f0;
+    -fx-background-radius: 4;
+}

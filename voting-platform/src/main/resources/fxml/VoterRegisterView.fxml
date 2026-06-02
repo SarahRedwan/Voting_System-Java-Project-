@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane prefHeight="650.0" prefWidth="720.0" style="-fx-background-color: #eef2ff;"
+            xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="org.example.client.controller.VoterRegisterController">
+
+    <top>
+        <VBox spacing="5.0" style="-fx-padding: 20;">
+            <Label text="Voter Registration" textFill="#1e293b">
+                <font><Font name="System Bold" size="26.0" /></font>
+            </Label>
+            <Label text="Complete the form below. A unique Voter ID will be assigned automatically when you register." textFill="#64748b" wrapText="true" />
+        </VBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true" style="-fx-background: transparent; -fx-background-color: transparent;">
+            <VBox spacing="12.0" maxWidth="500.0" style="-fx-background-color: white; -fx-padding: 25; -fx-background-radius: 8; -fx-border-color: #e2e8f0;">
+                <Label text="Full Name *" textFill="#312e81" />
+                <TextField fx:id="fullNameField" promptText="Legal full name" />
+                <Label text="Phone Number * (unique)" textFill="#312e81" />
+                <TextField fx:id="phoneField" promptText="e.g. 0911234567" />
+                <Label text="FAN Number / Fayda ID * (unique)" textFill="#312e81" />
+                <TextField fx:id="fanField" promptText="10-20 alphanumeric characters" />
+                <Label text="Date of Birth * (YYYY-MM-DD)" textFill="#312e81" />
+                <TextField fx:id="dobField" promptText="1990-05-15" />
+                <Label text="Address *" textFill="#312e81" />
+                <TextArea fx:id="addressField" promptText="Residential address" prefRowCount="2" wrapText="true" />
+                <Label text="ID Verification (optional)" textFill="#64748b" />
+                <TextField fx:id="idVerificationField" promptText="Additional ID reference if needed" />
+                <Label text="Create Password *" textFill="#312e81" />
+                <PasswordField fx:id="passwordField" promptText="Minimum 4 characters" />
+                <Label text="Confirm Password *" textFill="#312e81" />
+                <PasswordField fx:id="confirmPasswordField" />
+                <Label fx:id="statusLabel" wrapText="true" />
+                <HBox spacing="10.0" alignment="CENTER">
+                    <Button text="Register" onAction="#handleRegister" prefWidth="140.0"
+                            style="-fx-background-color: #059669; -fx-text-fill: white; -fx-font-weight: bold; -fx-padding: 10; -fx-cursor: hand;" />
+                    <Button text="Cancel" onAction="#handleCancel"
+                            style="-fx-background-color: #94a3b8; -fx-text-fill: white; -fx-padding: 10; -fx-cursor: hand;" />
+                </HBox>
+            </VBox>
+        </ScrollPane>
+    </center>
+</BorderPane>
